@@ -1,0 +1,15 @@
+<div class="container mt-5">
+    <div class="row">
+        {{#each pokemon }}
+        <div class="col-md-3">
+            <div id="{{url}}">
+                <article class="character-card mb-5">
+                    <h4>{{name}}</h4>
+                    <img src="{{imageUrl}}" alt="{{name}} Image">
+                    <a href="/pokemon/{{name}}" class="btn btn-dark">Ver detalles</a>
+                </article>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

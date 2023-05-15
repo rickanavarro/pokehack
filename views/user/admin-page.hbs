@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>User List</h1>
+
+    <hr class="mb-3">
+
+    {{#each users}}
+    <p>Username: {{username}}</p>
+    <p>Email: {{email}}</p>
+    <p>Role: {{role}}</p>
+    <form action="/admin/delete-user" method="POST">
+        <input type="hidden" name="userId" value="{{_id}}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <hr>
+    {{/each}}
+
+    <hr>
+    <a href="/" class="btn btn-dark">Home Page</a>
+</div>
