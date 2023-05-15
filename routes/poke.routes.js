@@ -7,7 +7,6 @@ const pokemonApiHandler = require('../services/pokemon-api.service')
 //lista
 router.get("/pokedex", (req, res, next) => {
 
-    // const { id: "https://pokeapi.co/api/v2/pokemon/{{id}}/"}
     pokemonApiHandler
         .getAllPokemon()
         .then(pokemon => res.render('pokemon/pokemon-list', { pokemon: pokemon.slice(0, 493) }))
@@ -21,8 +20,17 @@ router.get("/pokemon/:name", (req, res, next) => {
 
     pokemonApiHandler
         .getPokemonDetails(name)
-        .then(name =>
-            res.render('pokemon/pokemon-details', { pokemon: name }))
+        .then(pokemon =>
+            res.render('pokemon/pokemon-details', pokemon.data))
+        // .then(name => res.send(name.sprites))
+        .catch(err => next(err));
+})
+
+//list de kanto
+router.get("/pokedex/kanto", (req, res, next) => {
+    pokemonApiHandler
+        .getAllPokemonKanto()
+        .then(pokemon => res.render('pokemon/kanto-list', { pokemon: pokemon.data.pokemon_entries }))
         .catch(err => next(err));
 })
 
