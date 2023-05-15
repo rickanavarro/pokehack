@@ -1,0 +1,43 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <h1>New event</h1>
+            <hr>
+
+            <form action="/events/create" method="POST">
+                <div class="mb-3 mt-5">
+                    <label for="eventTitle" class="form-label">Event</label>
+                    <input type="text" class="form-control" id="eventTitle" name="name">
+                </div>
+
+                <div class="mb-3 ">
+                    <label for="eventType" class="form-label">Event Type</label>
+                    <select class="form-select" multiple name="eventType">
+                        <option value="Battle 1vs1">Battle 1vs1</option>
+                        <option value="Battle 2vs2">Battle 2vs2</option>
+                        <option value="Exchange">Exchange</option>
+                        <option value="CooperativeT">Cooperative</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="eventLocation" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="eventLocation" name="location">
+                </div>
+                {{!-- <div class="mb-3">
+                    <label for="eventAssistants" class="form-label">Assistants</label>
+                    <select class="form-select" multiple name="assistants">
+                    </select>
+                </div> --}}
+
+                <button type="submit" class="btn btn-dark">Create Event</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+</div>

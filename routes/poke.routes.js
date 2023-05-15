@@ -10,8 +10,6 @@ router.get("/pokedex", (req, res, next) => {
     // const { id: "https://pokeapi.co/api/v2/pokemon/{{id}}/"}
     pokemonApiHandler
         .getAllPokemon()
-
-
         .then(pokemon => res.render('pokemon/pokemon-list', { pokemon: pokemon.slice(0, 493) }))
         .catch(err => next(err));
 

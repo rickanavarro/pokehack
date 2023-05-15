@@ -40,6 +40,9 @@ app.use("/", userRouter)
 //pokedex routes
 const pokeRoutes = require("./routes/poke.routes");
 app.use("/", pokeRoutes);
+//events routes
+const eventsRoutes = require("./routes/events.routes");
+app.use("/", eventsRoutes)
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

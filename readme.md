@@ -1,7 +1,7 @@
 | HTTP Method | URL Path               | Description                  | JSON |
 | --------    | ---------              | -----------                  | ---- |
 |  GET        | /                      |  Index Page                  |      |
-|    GET      | /pokedex               |    National                  |      |
+|    GET      | `/pokedex`               |    National                  |      |
 |    GET      | /pokedex/:id           |    National Pokemon details  |      |
 |    GET      | /pokedex/kanto         |    Kanto list                |      |
 |    GET      | /pokedex/kanto/:id     |    Kanto Pokemon details     |      |
