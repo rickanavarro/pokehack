@@ -2,7 +2,7 @@
 | --------    | ---------              | -----------                  | ---- |
 |  GET        | /                      |  Index Page                  |      |
 |    GET      | /pokedex               |    National                  |      |
-|    GET      | /pokedex/:id           |    National Pokemon details  |      |
+|    GET      | /pokemon/:name         |    National Pokemon details  |      |
 |    GET      | /pokedex/kanto         |    Kanto list                |      |
 |    GET      | /pokedex/kanto/:id     |    Kanto Pokemon details     |      |
 |    GET      | /pokedex/johto         |     Johto list               |      |
