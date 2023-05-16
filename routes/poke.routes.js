@@ -22,7 +22,6 @@ router.get("/pokemon/:name", (req, res, next) => {
         .getPokemonDetails(name)
         .then(pokemon =>
             res.render('pokemon/pokemon-details', pokemon.data))
-        // .then(name => res.send(name.sprites))
         .catch(err => next(err));
 })
 
@@ -30,10 +29,33 @@ router.get("/pokemon/:name", (req, res, next) => {
 router.get("/pokedex/kanto", (req, res, next) => {
     pokemonApiHandler
         .getAllPokemonKanto()
-        .then(pokemon => res.render('pokemon/kanto-list', { pokemon: pokemon.data.pokemon_entries }))
+        .then(pokemon => res.render('pokemon/kanto-list', { pokemon: pokemon }))
         .catch(err => next(err));
 })
 
+//list de johto
+router.get("/pokedex/johto", (req, res, next) => {
+    pokemonApiHandler
+        .getAllPokemonJohto()
+        .then(pokemon => res.render('pokemon/johto-list', { pokemon: pokemon }))
+        .catch(err => next(err));
+})
+
+//list de hoenn
+router.get("/pokedex/hoenn", (req, res, next) => {
+    pokemonApiHandler
+        .getAllPokemonHoenn()
+        .then(pokemon => res.render('pokemon/hoenn-list', { pokemon: pokemon }))
+        .catch(err => next(err));
+})
+
+//list de sinnoh
+// router.get("/pokedex/sinnoh", (req, res, next) => {
+//     pokemonApiHandler
+//         .getAllPokemonSinnoh()
+//         .then(pokemon => res.render('pokemon/sinnoh-list', { pokemon: pokemon }))
+//         .catch(err => next(err));
+// })
 
 
 

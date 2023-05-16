@@ -57,18 +57,84 @@ class PokemonApiHandler {
         return this.axiosApp.get(`/pokemon/${name}`);
     }
 
-    getAllPokemonKanto() {
-        return this.axiosApp.get('/pokedex/2')
+    async getAllPokemonKanto() {
+        const response = await this.axiosApp.get('/pokedex/2');
+        const pokemonList = response.data.pokemon_entries;
+        const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
+            const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
+            const pokemonDetails = {
+                name: pokemon.pokemon_species.name,
+                id: pokemonDetailsResponse.data.id,
+                url: pokemonDetailsResponse.data.sprites.front_default,
+            };
+            return pokemonDetails;
+        }));
+        return pokemonDetailsList;
     }
+    async getAllPokemonJohto() {
+        const response = await this.axiosApp.get('/pokedex/3');
+        const pokemonList = response.data.pokemon_entries;
+        const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
+            const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
+            const pokemonDetails = {
+                name: pokemon.pokemon_species.name,
+                id: pokemonDetailsResponse.data.id,
+                url: pokemonDetailsResponse.data.sprites.front_default,
+            };
+            return pokemonDetails;
+        }));
+        return pokemonDetailsList;
+    }
+    // async getAllPokemonHoenn() {
+
+    //     const response = await this.axiosApp.get('/pokedex/4');
+    //     const pokemonList = response.data.pokemon_entries;
+    //     let pokemonPromises = pokemonList.map((pokemon) =>
+    //     this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`)
+    //     )
+    //     pokemonPromises = pokemonPromises.slice(0, 4)
+    //     const pokemonResponses = await Promise.all(pokemonPromises);
+    //     const pokemonDetailsList = pokemonResponses.map(reponse => reponse?.data)
+    //     console.log({ pokemonDetailsList })
+    //     return pokemonDetailsList;
+
+    // }
+
+    // const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
+    //     const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
+    //     const pokemonDetails = {
+    //         name: pokemon.pokemon_species.name,
+    //         id: pokemonDetailsResponse.data.id,
+    //         url: pokemonDetailsResponse.data.sprites.front_default,
+    //     };
+    //     console.log("------------------------------------------------", pokemonDetails)
+    //     return pokemonDetails;
+    // }));
+    // console.log('-------------------------------------------------------', pokemonDetailsList)
+    // return pokemonDetailsList;
+
+
+
+
+
+    // async getAllPokemonSinnoh() {
+    //     const response = await this.axiosApp.get('/pokedex/5');
+    //     const pokemonList = response.data.pokemon_entries;
+    //     const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
+    //         const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
+    //         const pokemonDetails = {
+    //             name: pokemon.pokemon_species.name,
+    //             id: pokemonDetailsResponse.data.id,
+    //             url: pokemonDetailsResponse.data.sprites.front_default,
+    //         };
+    //         return pokemonDetails;
+    //     }));
+    //     return pokemonDetailsList;
+    // }
+
+
 
 }
-
-
-
-
-
-
-
 const pokemonApiHandler = new PokemonApiHandler()
 
 module.exports = pokemonApiHandler
