@@ -27,6 +27,11 @@ const capitalize = require("./utils/capitalize");
 const projectName = "PokeHack";
 
 app.locals.appTitle = `${capitalize(projectName)}`;
+//app.locals.loggedUser = {username}
+// app.use((req, resm next) => {
+
+// next()
+// esto l sacamos fuera y lo metemos e los middlewate})
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");

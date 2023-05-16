@@ -16,16 +16,24 @@ router.get("/events/create", (req, res, next) => {
 
 router.post("/events/create", (req, res, next) => {
 
-    const { name, eventType, location, } = req.body
+    const { name, eventType, longitude, latitude, date, assistants } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
 
     Event
-        .create({ name, eventType, location })
-        .then(() => res.redirect(`/`))// esta sera la ruta real `/events/events-details/${newEvent._ud}`
+        .create({ name, eventType, location, date, assistants })
+        .then(() => res.redirect(`/`))// esta sera la ruta real `/events/events-details/${newEvent._id}`
+        .then(newEvent => {
+            const { longitude, latitude } = newEvent.location;
+            res.json({ longitude, latitude });
+        })
         .catch(err => console.log(err))
 })
 
 //añadir a lo anterior mensaje de error en el que si no marcamos una opcion nos da error para continuar
-
 
 
 //listado de eventos
@@ -50,6 +58,20 @@ router.get("/events/details/:event_id", (req, res, next) => {
         .then(event => res.render('events/events-details', event))
         .catch(err => console.log(err))
 })
+
+//ruta para el mapa en detalles
+
+router.get("/events/details/:event_id", (req, res, next) => {
+    res.render('events/events-details');
+});
+
+router.get("/api/events", (req, res, next) => {
+    Event
+        .find()
+        .then(events => res.json(events))
+        .catch(err => next(err))
+
+});
 
 
 

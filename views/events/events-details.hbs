@@ -1,15 +1,17 @@
 <div class="container">
-
-    <h1>{{name}}</h1>
-
-    <hr>
-
-    <p>{{eventType}}</p>
-    <p>{{location}}</p>
-
-
-    <hr>
-
-    <a href="/events" class="btn btn-dark">Volver al listado</a>
-
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1>Event Details</h1>
+            <hr>
+            <h3>Name: {{name}}</h3>
+            <p>Event Type: {{eventType}}</p>
+            <div id="map" style="height: 400px;"></div>
+            <p>Date: {{date}}</p>
+            <button class="btn btn-primary" id="joinButton">Join Event</button>
+        </div>
+    </div>
 </div>
+
+<script src="/js/eventsMap.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?callback=initViewMarkers&key=AIzaSyB_60L-8Uew5vuQwTzHGAUOSgwDtxTdZNs"></script>

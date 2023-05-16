@@ -9,18 +9,28 @@ const { isLoggedOut } = require('../middlewares/route-guards')
 
 //signup form (render)
 router.get('/signup', isLoggedOut, (req, res, next) => {
+
     res.render('auth/signup')
 })
 
 //signup form (handler)
 
 router.post('/signup', (req, res, next) => {
-    const { username, email, plainPassword } = req.body
+
+
+    const { username, name, surname, email, plainPassword, phoneNumber,
+        'address.street': street,
+        'address.city': city,
+        'address.state': state,
+        'address.zipCode': zipCode, avatar } = req.body
 
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(plainPassword, salt))
-        .then(hashedPassword => User.create({ username, email, password: hashedPassword }))
+        .then(hashedPassword => User.create({
+            username, name, surname, email, password: hashedPassword, phoneNumber,
+            address: { street, city, state, zipCode }, avatar
+        }))
         .then(() => res.redirect('/'))  // ver a dónde redirigimos tras hacer el sign up
         .catch(err => next(err))
 
@@ -64,8 +74,6 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/'))
 })
-
-
 
 
 
