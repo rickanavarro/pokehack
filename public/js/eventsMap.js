@@ -43,27 +43,6 @@ function renderEventsMarkers(eventsJSON) {
 }
 
 
-function joinEvent(eventId, userId) {
-    console.log(eventId);
-    fetch(`/events/join/${eventId}`, {
-        method: 'POST',
-        body: JSON.stringify({ userId }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then((response) => {
-            if (response.ok) {
-                console.log('El usuario se unió al evento exitosamente');
-            } else {
-                console.log('Error al unirse al evento');
-            }
-        })
-        .catch((error) => {
-            console.log('Error de red:', error);
-        });
-}
-
 
 
 

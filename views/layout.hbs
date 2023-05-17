@@ -12,13 +12,18 @@
 </head>
 
 <body>
-   <nav class="navbar navbar-expand-lg bg-dark mb-5" data-bs-theme="dark">
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="#">
+         <img src="./../public/images/Pokebola-pokeball-png-0.png" alt="pokeball" width="30" height="24">
+      </a>
       <div class="container-fluid">
          <a class="navbar-brand" href="/">{{siteTitle}}</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
+
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                <li class="nav-item">
@@ -31,10 +36,6 @@
                      <li><a class="dropdown-item" href="/pokedex">National</a></li>
                      <li><a class="dropdown-item" href="/pokedex/kanto">Kanto</a></li>
                      <li><a class="dropdown-item" href="/pokedex/johto">Johto</a></li>
-                     {{!-- <li><a class="dropdown-item" href="/pokedex/hoenn">Hoenn</a></li>
-                     <li><a class="dropdown-item" href="/pokedex/sinnoh">Sinnoh</a></li> --}}
-
-
                   </ul>
                </li>
                <li class="nav-item dropdown">
@@ -42,7 +43,7 @@
                      aria-expanded="false">Log in/Register</a>
                   <ul class="dropdown-menu">
                      <li><a class="dropdown-item" href="/signup">Sign up</a></li>
-                     <li><a class="dropdown-item" href="/login">Log In </a></li>
+                     <li><a class="dropdown-item" href="/login">Log In</a></li>
                      <li><a class="dropdown-item" href="/logout">Log out</a></li>
                   </ul>
                </li>
