@@ -48,9 +48,14 @@ router.get("/pokedex/johto", (req, res, next) => {
 
 router.post("/pokedex/favorite/:name", isLoggedIn, (req, res, next) => {
     const { name } = req.params
-    const userId = req.user.id;
+    const id = req.session.currentUser;
 
-    pokemonApiHandler
+    User
+        .findByIdAndUpdate(id, { $push: { "myFavorites": name } })
+        .then(res.redirect('/pokedex'))
+        .catch(err => console.log(err))
+
+
 
 })
 

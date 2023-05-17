@@ -60,13 +60,7 @@ const userSchema = new Schema(
       type: String,
       required: false
     },
-    myFavorites: [{
-      names: {
-        type: String,
-        max: 6
-      }
-    }
-    ]
+    myFavorites: [{ type: String, }]
 
   },
   {

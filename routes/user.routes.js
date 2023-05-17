@@ -1,13 +1,18 @@
 const express = require('express')
 const { isLoggedIn, checkRoles } = require('../middlewares/route-guards')
 const router = express.Router()
+const pokemonApiHandler = require('../services/pokemon-api.service')
 
 const User = require('./../models/User.model')
 
 // profile page
 router.get("/profile", isLoggedIn, (req, res, next) => {
+    const { name } = req.session.currentUser.myFavorites
 
-    res.render('user/profile', { user: req.session.currentUser })
+
+    console.log(req.session.currentUser.myFavorites[1])
+
+
 })
 
 
