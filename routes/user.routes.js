@@ -5,18 +5,10 @@ const router = express.Router()
 const User = require('./../models/User.model')
 
 // profile page
-router.get("/profile/:user_id", isLoggedIn, (req, res, next) => {
+router.get("/profile", isLoggedIn, (req, res, next) => {
 
-    const { user_id } = req.params
-    const userRole = {
-        isADMIN: req.session.currentUser?.role === 'ADMIN',
-        islogged: req.session.currentUser?._id === user_id
-    }
+    res.render('user/profile', { user: req.session.currentUser })
 
-    User
-        .findById(user_id)
-        .then(user => res.render('user/profile', { user, userRole }))
-        .catch(err => console.log(err))
 })
 
 

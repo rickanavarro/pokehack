@@ -1,5 +1,8 @@
+
 let myMap
-//const eventCoords = { lat: 40.387574534772334, lng: -3.7056949208125385 }
+const eventCoords = { lat: 40.387574534772334, lng: -3.7056949208125385 }
+
+const idEvent = document.querySelector('#id').value
 
 
 function initViewMarkers() {
@@ -24,41 +27,21 @@ function getEventsJSON() {
 }
 
 function renderEventsMarkers(eventsJSON) {
-    console.log({ eventsJSON })
+    console.log(eventsJSON, idEvent)
+
     eventsJSON.forEach(elm => {
-        const eventCoords = { lat: elm?.location?.coordinates[0], lng: elm?.location?.coordinates[1] };
-        new google.maps.Marker({
-            map: myMap,
-            position: eventCoords,
-            title: elm.name
-        });
+        if (elm._id === idEvent) {
+            const eventCoords = { lat: elm?.location?.coordinates[0], lng: elm?.location?.coordinates[1] };
+            new google.maps.Marker({
+                map: myMap,
+                position: eventCoords,
+                title: elm.name
+            });
+        }
+
     });
 }
 
-// function renderEventsMarkers(eventId) {
-//     fetch(`/api/location/${eventId}`)
-//         .then(res => res.json())
-//         .then(event => {
-//             const eventCoords = {
-//                 lat: event.location.coordinates[0],
-//                 lng: event.location.coordinates[1]
-//             };
-//             new google.maps.Marker({
-//                 map: myMap,
-//                 position: eventCoords,
-//                 title: event.name
-//             });
-//         })
-//         .catch(err => console.log(err));
-// }
-
-// router.get("/api/location/:event_id", (req, res, next) => {
-//     const { event_id } = req.params;
-
-//     Event.findById(event_id)
-//         .then(event => res.json(event))
-//         .catch(err => next(err));
-// });
 
 function joinEvent(eventId, userId) {
     console.log(eventId);
