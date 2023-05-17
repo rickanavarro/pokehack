@@ -12,7 +12,7 @@ router.get("/pokedex", (req, res, next) => {
 
     pokemonApiHandler
         .getAllPokemon()
-        .then(pokemon => res.render('pokemon/pokemon-list', { pokemon: pokemon.slice(0, 493) }))
+        .then(pokemon => res.render('pokemon/pokemon-list', { pokemon: pokemon.slice(0, 251) }))
         .catch(err => next(err));
 
 })
