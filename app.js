@@ -18,7 +18,7 @@ const capitalize = require("./utils/capitalize");
 const projectName = "PokeHack";
 app.locals.appTitle = `${capitalize(projectName)}`;
 //app.locals.loggedUser = {username}
-// app.use((req, resm next) => {
+// app.use((req, res, next) => {
 
 // next()
 // esto l sacamos fuera y lo metemos e los middlewate})

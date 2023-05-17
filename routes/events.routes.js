@@ -1,5 +1,5 @@
 const express = require('express')
-// const { isLoggedIn } = require('../middlewares/route-guards')
+const { isLoggedIn } = require('../middlewares/route-guards')
 const router = express.Router()
 const Event = require('../models/Event.model')
 
@@ -7,14 +7,14 @@ const Event = require('../models/Event.model')
 
 //new event (render)
 
-router.get("/events/create", (req, res, next) => {
+router.get("/events/create", isLoggedIn, (req, res, next) => {
     res.render("events/create-event")
 })
 
 
 //new event (handler)
 
-router.post("/events/create", (req, res, next) => {
+router.post("/events/create", isLoggedIn, (req, res, next) => {
 
     const { name, eventType, longitude, latitude, date, assistants } = req.body
 
@@ -38,7 +38,7 @@ router.post("/events/create", (req, res, next) => {
 
 //listado de eventos
 
-router.get("/events", (req, res, next) => {
+router.get("/events", isLoggedIn, (req, res, next) => {
 
     Event
         .find()
@@ -65,13 +65,36 @@ router.get("/events/details/:event_id", (req, res, next) => {
     res.render('events/events-details');
 });
 
-router.get("/api/events", (req, res, next) => {
+router.get("/api/location", (req, res, next) => {
     Event
         .find()
         .then(events => res.json(events))
         .catch(err => next(err))
-
 });
+
+router.post('/events/join/:event_id', (req, res, next) => {
+    const { event_id } = req.params;
+    const { userId } = req.body;
+
+    Event.findById(event_id)
+        .then((event) => {
+            if (event.assistants.includes(userId)) {
+                return res.send('El usuario ya está registrado en este evento');
+            }
+
+            event.assistants.push(userId);
+            event.save();
+            res.status(200).send('El usuario se unió al evento exitosamente');
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send('Error al unirse al evento');
+        });
+});
+
+
+
+
 
 
 

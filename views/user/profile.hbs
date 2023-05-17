@@ -1,0 +1,36 @@
+<div class="user-profile">
+    <div class="container">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    {{!-- <img src={{user.profileImg}} class="img-fluid rounded-start"> --}}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{user.username}} </h5>
+                        <p class="card-text">{{user.name}}</p>
+                        <p class="card-text">{{user.surname}}</p>
+                        <p class="card-text">{{user.address}}</p>
+                        <p class="card-text">{{user.email}}</p>
+
+                        {{!-- {{#if userRole.isLogged}}
+                        <a href="/student-edit/{{user._id}}" class="btn btn-sm btn-info">Editar perfil</a>
+                        {{/if}} --}}
+                        {{!-- {{#if userRole.isADMIN}}
+                        <a href="/student-edit/{{user._id}}" class="btn btn-sm btn-info">Editar perfil</a>
+                        <form action="/student-delete/{{user._id}}" method="POST" style="display: inline">
+                            <input type="submit" value="eliminar" class="btn btn-sm btn-danger">
+                        </form>
+                        <form action="/student-dev/{{user._id}}" method="POST" style="display: inline">
+                            <input type="submit" value="DEV" class="btn btn-sm btn-warning">
+                        </form>
+                        <form action="/student-ta/{{user._id}}" method="POST" style="display: inline">
+                            <input type="submit" value="TA" class="btn btn-sm btn-info">
+                        </form>
+                        {{/if}} --}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
