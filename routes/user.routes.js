@@ -8,7 +8,6 @@ const User = require('./../models/User.model')
 router.get("/profile", isLoggedIn, (req, res, next) => {
 
     res.render('user/profile', { user: req.session.currentUser })
-
 })
 
 
