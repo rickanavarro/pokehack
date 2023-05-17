@@ -72,27 +72,19 @@ router.get("/api/location", (req, res, next) => {
         .catch(err => next(err))
 });
 
-router.post('/events/join/:event_id', (req, res, next) => {
-    const { event_id } = req.params;
-    const { userId } = req.body;
+//ruta para unirse al evento
 
-    Event.findById(event_id)
-        .then((event) => {
-            if (event.assistants.includes(userId)) {
-                return res.send('El usuario ya está registrado en este evento');
-            }
+router.post('/events/:id/assistance', (req, res, next) => {
 
-            event.assistants.push(userId);
-            event.save();
-            res.status(200).send('El usuario se unió al evento exitosamente');
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send('Error al unirse al evento');
-        });
-});
+    const { id } = req.params
+    const { _id } = req.session.currentUser
 
-
+    Event
+        .findByIdAndUpdate(id, { $addToSet: { assistance: _id } })
+        .then(() => res.redirect(`/events/details/${id}`))
+        .catch((err) => console.log(err)
+        )
+})
 
 
 

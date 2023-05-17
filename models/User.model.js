@@ -60,8 +60,9 @@ const userSchema = new Schema(
       type: String,
       required: false
     },
-    myFavorites: [{ type: String, }]
-
+    myFavorites: [{
+      type: String,
+    }]
   },
   {
     timestamps: true

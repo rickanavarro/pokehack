@@ -24,12 +24,10 @@ const eventSchema = new Schema(
                 type: [Number],
             },
         },
-        assistance: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'User',
-            },
-        ],
+        assistance: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        }],
     },
 
     {
