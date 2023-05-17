@@ -85,36 +85,20 @@ class PokemonApiHandler {
         }));
         return pokemonDetailsList;
     }
-    // async getAllPokemonHoenn() {
 
-    //     const response = await this.axiosApp.get('/pokedex/4');
-    //     const pokemonList = response.data.pokemon_entries;
-    //     let pokemonPromises = pokemonList.map((pokemon) =>
-    //     this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`)
-    //     )
-    //     pokemonPromises = pokemonPromises.slice(0, 4)
-    //     const pokemonResponses = await Promise.all(pokemonPromises);
-    //     const pokemonDetailsList = pokemonResponses.map(reponse => reponse?.data)
-    //     console.log({ pokemonDetailsList })
-    //     return pokemonDetailsList;
+    // getAllPokemonHoenn() {
 
+    //     console.log('ENTRANDO')
+
+    //     this.axiosApp
+    //         .get('/pokedex/4')
+    //         .then(({ data }) => {
+    //             console.log('LA DATA ------>', data)
+    //             const pokePromises = data.pokemon_entries.map(({ pokemon_species }) => this.axiosApp.get(`/pokemon/${pokemon_species.name}`))
+    //             return Promise.all(pokePromises)
+    //         })
+    //         .catch(err => console.log(err))
     // }
-
-    // const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
-    //     const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
-    //     const pokemonDetails = {
-    //         name: pokemon.pokemon_species.name,
-    //         id: pokemonDetailsResponse.data.id,
-    //         url: pokemonDetailsResponse.data.sprites.front_default,
-    //     };
-    //     console.log("------------------------------------------------", pokemonDetails)
-    //     return pokemonDetails;
-    // }));
-    // console.log('-------------------------------------------------------', pokemonDetailsList)
-    // return pokemonDetailsList;
-
-
-
 
 
     // async getAllPokemonSinnoh() {

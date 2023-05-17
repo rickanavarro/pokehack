@@ -59,7 +59,15 @@ const userSchema = new Schema(
     avatar: {
       type: String,
       required: false
+    },
+    myFavorites: [{
+      names: {
+        type: String,
+        max: 6
+      }
     }
+    ]
+
   },
   {
     timestamps: true
