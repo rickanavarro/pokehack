@@ -38,15 +38,8 @@
                      <li><a class="dropdown-item" href="/pokedex/johto">Johto</a></li>
                   </ul>
                </li>
-               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                     aria-expanded="false">Log in/Register</a>
-                  <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="/signup">Sign up</a></li>
-                     <li><a class="dropdown-item" href="/login">Log In</a></li>
-                     <li><a class="dropdown-item" href="/logout">Log out</a></li>
-                  </ul>
-               </li>
+
+
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                      aria-expanded="false">Events</a>
@@ -62,9 +55,25 @@
                      <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
                   </ul>
                </li>
+               {{#if loggedUser}}
                <li class="nav-item">
-                  <a class="nav-link" href="/profile">Mi perfil</a>
+                  <a class="nav-link" href="/profile">My profile</a>
                </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/logout">Log out</a>
+               </li>
+               {{else}}
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                     aria-expanded="false">Log
+                     in/Register</a>
+                  <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="/signup">Sign up</a></li>
+                     <li><a class="dropdown-item" href="/login">Log In</a></li>
+                  </ul>
+               </li>
+
+               {{/if}}
             </ul>
          </div>
       </div>

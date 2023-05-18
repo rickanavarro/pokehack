@@ -1,11 +1,9 @@
 <div class="container mt-5">
     <div class="row">
-
-        <div class="col-md-3">
-            <div>
-                <article class="character-card mb-5">
+        <div class="col-md-3 d-flex align-items-center justify-content-center">
+            <div class="card">
+                <div class="card-body text-center">
                     <h1>{{name}} details</h1>
-
                     <hr>
                     <img src={{sprites.versions.generation-iv.platinum.front_default}} alt="{{name}}">
                     <p>id: {{id}}</p>
@@ -16,11 +14,9 @@
                         <li>{{types.[1].type.name}}</li>
                         <li>{{types.[2].type.name}}</li>
                     </ul>
-
                     <hr>
-                </article>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
