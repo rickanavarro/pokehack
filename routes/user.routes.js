@@ -6,12 +6,21 @@ const pokemonApiHandler = require('../services/pokemon-api.service')
 const User = require('./../models/User.model')
 
 // profile page
-router.get("/profile", isLoggedIn, (req, res, next) => {
-    const { name } = req.session.currentUser.myFavorites
+router.get("/profile", isLoggedIn, async (req, res, next) => {
 
+    const user = await User.findById(req.session.currentUser._id)
 
-    console.log(req.session.currentUser.myFavorites[1])
+    const pokemonFavorites = user.myFavorites;
 
+    const promises = pokemonFavorites.map(pokemon => pokemonApiHandler.getPokemonDetails(pokemon))
+
+    const responses = await Promise.all(promises)
+
+    const pokemons = responses.map(elem => elem.data)
+    console.log({ pokemons })
+
+    console.log({ pokemons, user })
+    res.render("user/profile", { pokemons, user })
 
 })
 
