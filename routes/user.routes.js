@@ -4,16 +4,30 @@ const router = express.Router()
 const pokemonApiHandler = require('../services/pokemon-api.service')
 
 const User = require('./../models/User.model')
-
+const Event = require('./../models/Event.model')
 // profile page
 router.get("/profile", isLoggedIn, (req, res, next) => {
-    const { name } = req.session.currentUser.myFavorites
+    const userId = req.session.currentUser._id;
+    const userPromise = User.findById(userId).exec();
+    const eventPromise = Event.find({ "assistance": { "$in": [userId] } }).exec();
+    let events;
+    let user;
 
+    Promise.all([userPromise, eventPromise])
+        .then(([userResult, eventsResult]) => {
+            user = userResult;
+            events = eventsResult;
+            const pokePromises = user.myFavorites.map(pokemon => pokemonApiHandler.getPokemonDetails(pokemon));
+            return Promise.all(pokePromises);
+        })
+        .then(pokemonDetails => {
+            console.log(events);
+            const pokemonData = pokemonDetails.map(elm => elm.data);
+            res.render('user/profile', { pokemonData, events, user });
+        })
+        .catch(err => console.log("Error occurred: " + err));
+});
 
-    console.log(req.session.currentUser.myFavorites[1])
-
-
-})
 
 
 // admin page (PROTECTED & ROLE BASED ACCESS -render-)

@@ -7,13 +7,21 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">{{user.username}} </h5>
+                        <h5 class="card-title">{{username}} </h5>
                         <p class="card-text">{{user.name}}</p>
                         <p class="card-text">{{user.surname}}</p>
-                        <p class="card-text">{{user.address}}</p>
+                        <p class="card-text">{{user.address.city}}</p>
                         <p class="card-text">{{user.email}}</p>
                         <p class="card-text">{{user.assistance}}</p>
-
+                        <p class="card-text">Eventos</p>
+                        {{#each events }}
+                        <p class="card-text">{{name}}</p>
+                        {{/each}}
+                        <p class="card-text">Pokemons</p>
+                        {{#each pokemonData }}
+                        <p class="card-text">{{name}}</p>
+                        <img src={{sprites.front_default}} alt="">
+                        {{/each}}
                     </div>
                 </div>
             </div>
