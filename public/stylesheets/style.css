@@ -27,6 +27,10 @@ h1 {
   height: 100px;
 }
 
+li {
+  list-style: none;
+}
+
 .navbar {
   background-color: green;
 

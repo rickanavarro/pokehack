@@ -5,13 +5,16 @@ const pokemonApiHandler = require('../services/pokemon-api.service')
 
 const User = require('./../models/User.model')
 const Event = require('./../models/Event.model')
+
+
+
 // profile page
 router.get("/profile", isLoggedIn, (req, res, next) => {
     const userId = req.session.currentUser._id;
-    const userPromise = User.findById(userId).exec();
-    const eventPromise = Event.find({ "assistance": { "$in": [userId] } }).exec();
-    let events;
-    let user;
+    const userPromise = User.findById(userId)
+    const eventPromise = Event.find({ "assistance": { "$in": [userId] } })
+    let events
+    let user
 
     Promise.all([userPromise, eventPromise])
         .then(([userResult, eventsResult]) => {
@@ -21,12 +24,12 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
             return Promise.all(pokePromises);
         })
         .then(pokemonDetails => {
-            console.log(events);
-            const pokemonData = pokemonDetails.map(elm => elm.data);
-            res.render('user/profile', { pokemonData, events, user });
+            console.log(events)
+            const pokemonData = pokemonDetails.map(elm => elm.data)
+            res.render('user/profile', { pokemonData, events, user })
         })
-        .catch(err => console.log("Error occurred: " + err));
-});
+        .catch(err => console.log("Error occurred: " + err))
+})
 
 
 
@@ -49,6 +52,18 @@ router.post("/admin/delete-user", isLoggedIn, checkRoles('ADMIN'), (req, res, ne
         .then(() => { res.redirect("/admin") })
         .catch(error => { next(error) })
 })
+
+//edit users
+router.get("/admin/:id", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
+    const { _id } = req.params
+
+    User
+        .findByIdAndUpdate(_id)
+        .then((response) => res.render("/user/details", response))
+        .catch(error => { next(error) })
+})
+
+
 
 
 

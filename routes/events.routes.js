@@ -25,7 +25,7 @@ router.post("/events/create", isLoggedIn, (req, res, next) => {
 
     Event
         .create({ name, eventType, location, date, assistants })
-        .then(() => res.redirect(`/`))// esta sera la ruta real `/events/events-details/${newEvent._id}`
+        .then(() => res.redirect(`/events`))
         .then(newEvent => {
             const { longitude, latitude } = newEvent.location;
             res.json({ longitude, latitude });
@@ -38,11 +38,11 @@ router.post("/events/create", isLoggedIn, (req, res, next) => {
 
 //listado de eventos
 
-router.get("/events", isLoggedIn, (req, res, next) => {
+router.get("/events", (req, res, next) => {
 
     Event
         .find()
-        .then(events => res.render("events/events", { events: events })) //aquí puede acceder cualquier usuario o tiene que estar logeado??
+        .then(events => res.render("events/events", { events: events }))
         .catch(err => console.log(err))
 
 })
@@ -74,7 +74,7 @@ router.get("/api/location", (req, res, next) => {
 
 //ruta para unirse al evento
 
-router.post('/events/:id/assistance', (req, res, next) => {
+router.post('/events/:id/assistance', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
     const { _id } = req.session.currentUser
