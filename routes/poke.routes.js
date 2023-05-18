@@ -16,6 +16,17 @@ router.get("/pokedex", (req, res, next) => {
         .catch(err => next(err));
 
 })
+//mark as favorite in pokedex
+
+router.post("/pokedex/favorite/:name", isLoggedIn, (req, res, next) => {
+    const { name } = req.params
+    const id = req.session.currentUser;
+
+    User
+        .findByIdAndUpdate(id, { $push: { "myFavorites": name } })
+        .then(res.redirect('/pokedex'))
+        .catch(err => console.log(err))
+})
 
 //details
 router.get("/pokemon/:name", (req, res, next) => {
@@ -35,30 +46,34 @@ router.get("/pokedex/kanto", (req, res, next) => {
         .then(pokemon => res.render('pokemon/kanto-list', { pokemon: pokemon }))
         .catch(err => next(err));
 })
-
-//list de johto
-router.get("/pokedex/johto", (req, res, next) => {
-    pokemonApiHandler
-        .getAllPokemonJohto()
-        .then(pokemon => res.render('pokemon/johto-list', { pokemon: pokemon }))
-        .catch(err => next(err));
-})
-
-//mark as favorite
-
-router.post("/pokedex/favorite/:name", isLoggedIn, (req, res, next) => {
+//favorite in kanto
+router.post("/kanto/favorite/:name", isLoggedIn, (req, res, next) => {
     const { name } = req.params
     const id = req.session.currentUser;
 
     User
         .findByIdAndUpdate(id, { $push: { "myFavorites": name } })
-        .then(res.redirect('/pokedex'))
+        .then(res.redirect('/pokedex/kanto'))
         .catch(err => console.log(err))
-
-
-
 })
 
+//list de johto
+
+router.get("/pokedex/johto", (req, res, next) => {
+    pokemonApiHandler.getAllPokemonJohto()
+        .then(pokemon => res.render("pokemon/johto-list", { pokemon: pokemon }))
+        .catch(err => next(err));
+});
+//favorite in johto
+router.post("/johto/favorite/:name", isLoggedIn, (req, res, next) => {
+    const { name } = req.params
+    const id = req.session.currentUser;
+
+    User
+        .findByIdAndUpdate(id, { $push: { "myFavorites": name } })
+        .then(res.redirect('/pokedex/johto'))
+        .catch(err => console.log(err))
+})
 //list de hoenn
 // router.get("/pokedex/hoenn", (req, res, next) => {
 
