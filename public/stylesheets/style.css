@@ -47,5 +47,9 @@ li {
 
 .navbar .nav-link {
   color: white;
-  /* Cambia el color del texto a amarillo */
+
+}
+
+.card {
+  background: linear-gradient(to bottom right, #e6f7ff, #99c2ff);
 }

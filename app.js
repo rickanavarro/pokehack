@@ -17,12 +17,11 @@ require("./config/session.config")(app)
 const capitalize = require("./utils/capitalize");
 const projectName = "PokeHack";
 app.locals.appTitle = `${capitalize(projectName)}`;
-//app.locals.loggedUser = {username}
-// app.use((req, res, next) => {
 
-// next()
-// esto l sacamos fuera y lo metemos e los middlewate})
-
+app.use((req, res, next) => {
+    app.locals.loggedUser = req.session.currentUser
+    next()
+})
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
@@ -38,6 +37,8 @@ app.use("/", pokeRoutes);
 //events routes
 const eventsRoutes = require("./routes/events.routes");
 app.use("/", eventsRoutes)
+
+
 
 
 require("./error-handling")(app);
