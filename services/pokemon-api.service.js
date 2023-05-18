@@ -73,7 +73,7 @@ class PokemonApiHandler {
     }
     getAllPokemonJohto() {
 
-        this.axiosApp.get('/pokedex/3').then(data => console.log(data.data))
+        this.axiosApp.get('/pokedex/3').then(data => console.log(data.data.pokemon_entries))
 
 
         //     const response = await this.axiosApp.get('/pokedex/3');
