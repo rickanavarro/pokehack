@@ -17,3 +17,8 @@ h1 {
   width: 100%;
   background-color: red;
 }
+
+.profilePokemon {
+  width: 100px;
+  height: 100px;
+}

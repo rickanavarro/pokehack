@@ -71,19 +71,23 @@ class PokemonApiHandler {
         }));
         return pokemonDetailsList;
     }
-    async getAllPokemonJohto() {
-        const response = await this.axiosApp.get('/pokedex/3');
-        const pokemonList = response.data.pokemon_entries;
-        const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
-            const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
-            const pokemonDetails = {
-                name: pokemon.pokemon_species.name,
-                id: pokemonDetailsResponse.data.id,
-                url: pokemonDetailsResponse.data.sprites.front_default,
-            };
-            return pokemonDetails;
-        }));
-        return pokemonDetailsList;
+    getAllPokemonJohto() {
+
+        this.axiosApp.get('/pokedex/3').then(data => console.log(data.data))
+
+
+        //     const response = await this.axiosApp.get('/pokedex/3');
+        //     const pokemonList = response.data.pokemon_entries;
+        //     const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
+        //         const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
+        //         const pokemonDetails = {
+        //             name: pokemon.pokemon_species.name,
+        //             id: pokemonDetailsResponse.data.id,
+        //             url: pokemonDetailsResponse.data.sprites.front_default,
+        //         };
+        //         return pokemonDetails;
+        //     }));
+        //     return pokemonDetailsList;
     }
 
     // getAllPokemonHoenn() {
