@@ -26,10 +26,8 @@ class PokemonApiHandler {
                         return this.getPokemonDetails(pokemon.name)
                             .then((response) => {
                                 const imageUrl = response.data.sprites.front_default;
-                                // const capitalizedName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
                                 return {
                                     ...pokemon,
-                                    // name: capitalizedName,
                                     url: imageUrl
                                 };
                             })
