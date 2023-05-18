@@ -58,7 +58,7 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      required: false
+      required: true
     },
     myFavorites: [{
       type: String,

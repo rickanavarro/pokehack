@@ -27,7 +27,6 @@ function getEventsJSON() {
 }
 
 function renderEventsMarkers(eventsJSON) {
-    console.log(eventsJSON, idEvent)
 
     eventsJSON.forEach(elm => {
         if (elm._id === idEvent) {

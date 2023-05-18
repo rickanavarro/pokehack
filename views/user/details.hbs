@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1>Editar {{name}}</h1>
+            <hr>
+
+            <form action="/admin/{{id}}" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{username}}">
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{name}}">
+                </div>
+                <div class="mb-3">
+                    <label for="surname" class="form-label">Surname</label>
+                    <input type="text" class="form-control" id="surname" name="surname" value="{{surname}}">
+                </div>
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input type="number" class="form-control" id="phoneNumber" name="phoneNumber"
+                        value="{{phoneNumber}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control" placeholder="Street" name="address.street"
+                        value="{{address.street}}">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control mb-3" placeholder="City" name="address.city"
+                            value="{{address.city}}">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control mb-3" placeholder="State" name="address.state"
+                            value="{{address.state}}">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" placeholder="Zip Code" name="address.zipCode"
+                        value="{{address.zipCode}}">
+                </div>
+                <div class="mb-3">
+                    <label for="avatar" class="form-label">Avatar</label>
+                    <input type="text" class="form-control" id="avatar" name="avatar" value="{{avatar}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{email}}">
+                </div>
+                <button type="submit" class="btn btn-dark">Guardar edición</button>
+            </form>
+        </div>
+    </div>
+</div>

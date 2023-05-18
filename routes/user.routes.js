@@ -55,13 +55,26 @@ router.post("/admin/delete-user", isLoggedIn, checkRoles('ADMIN'), (req, res, ne
 
 //edit users
 router.get("/admin/:id", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
-    const { _id } = req.params
+    const { id } = req.params
 
     User
-        .findByIdAndUpdate(_id)
-        .then((response) => res.render("/user/details", response))
+        .findByIdAndUpdate(id)
+        .then(response => res.render("user/details", response))
         .catch(error => { next(error) })
 })
+
+router.post("/admin/:id", (req, res, next) => {
+    const { username, name, surname, phoneNumber, street, city, state, zipCode, avatar, email } = req.body
+    const { _id } = req.params
+    const address = { street, city, state, zipCode }
+
+    User
+        .findByIdAndUpdate(_id, { username, name, surname, phoneNumber, address, avatar, email })
+        .then(() => res.redirect(`/admin`))
+        .catch(err => console.log(err))
+})
+
+
 
 
 
