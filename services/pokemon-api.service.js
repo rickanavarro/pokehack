@@ -30,7 +30,7 @@ class PokemonApiHandler {
                                 return {
                                     ...pokemon,
                                     // name: capitalizedName,
-                                    imageUrl: imageUrl
+                                    url: imageUrl
                                 };
                             })
                             .catch((error) => {
@@ -120,20 +120,20 @@ class PokemonApiHandler {
     // }
 
 
-    // async getAllPokemonSinnoh() {
-    //     const response = await this.axiosApp.get('/pokedex/5');
-    //     const pokemonList = response.data.pokemon_entries;
-    //     const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
-    //         const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
-    //         const pokemonDetails = {
-    //             name: pokemon.pokemon_species.name,
-    //             id: pokemonDetailsResponse.data.id,
-    //             url: pokemonDetailsResponse.data.sprites.front_default,
-    //         };
-    //         return pokemonDetails;
-    //     }));
-    //     return pokemonDetailsList;
-    // }
+    async getAllPokemonSinnoh() {
+        const response = await this.axiosApp.get('/pokedex/5');
+        const pokemonList = response.data.pokemon_entries;
+        const pokemonDetailsList = await Promise.all(pokemonList.map(async (pokemon) => {
+            const pokemonDetailsResponse = await this.axiosApp.get(`/pokemon/${pokemon.pokemon_species.name}`);
+            const pokemonDetails = {
+                name: pokemon.pokemon_species.name,
+                id: pokemonDetailsResponse.data.id,
+                url: pokemonDetailsResponse.data.sprites.front_default,
+            };
+            return pokemonDetails;
+        }));
+        return pokemonDetailsList;
+    }
 
 
 

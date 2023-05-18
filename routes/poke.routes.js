@@ -34,8 +34,7 @@ router.get("/pokemon/:name", (req, res, next) => {
 
     pokemonApiHandler
         .getPokemonDetails(name)
-        .then(pokemon =>
-            res.render('pokemon/pokemon-details', pokemon.data))
+        .then(pokemon => res.render('pokemon/pokemon-details', pokemon.data))
         .catch(err => next(err));
 })
 
