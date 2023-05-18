@@ -1,14 +1,19 @@
 body {
   /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url(https://i.pinimg.com/564x/1a/1c/61/1a1c612405c654f4b8e26f5511aeca6f.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-image: url(https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2016/08/187200-tipos-pokemon-maplerose.jpg?tf=3840x);
+  background-position: top center;
+  background-attachment: fixed;
   background-size: cover;
 }
 
 a {
   color: #00b7ff;
+}
+
+.bg-list {
+  background-color: #ffffff7e;
+  backdrop-filter: blur(10px);
 }
 
 h1 {
@@ -32,7 +37,7 @@ li {
 }
 
 .navbar {
-  background-color: green;
+  background-color: blue;
 
   border-radius: 10px;
 
@@ -41,6 +46,6 @@ li {
 }
 
 .navbar .nav-link {
-  color: yellow;
+  color: white;
   /* Cambia el color del texto a amarillo */
 }
