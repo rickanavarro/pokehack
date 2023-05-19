@@ -90,6 +90,7 @@ router.post('/events/:id/assistance', isLoggedIn, (req, res, next) => {
 
 
 
+
 module.exports = router
 
 

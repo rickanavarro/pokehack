@@ -17,6 +17,9 @@
                         <ul class="list-group">
                             {{#each events }}
                             <li class="list-group-item">{{name}}</li>
+                            <form action="/events/{{id}}/pull" method="POST" style="display: inline">
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
                             {{/each}}
                         </ul>
                         <hr>
@@ -31,10 +34,10 @@
                                     <div class="card-body">
                                         <h6 class="card-title">{{name}}</h6>
                                     </div>
-                                    <form action="/unfavorite/{{name}}" method="POST" style="display: inline">
-                                        <input type="submit" value="unFavorite" class="btn btn-sm btn-danger">
-                                    </form>
                                 </div>
+                                <form action="/unfavorite/{{name}}" method="POST" style="display: inline">
+                                    <input type="submit" value="unFavorite" class="btn  btn-danger">
+                                </form>
                             </div>
                             {{/each}}
                         </div>

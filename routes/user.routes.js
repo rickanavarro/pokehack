@@ -31,6 +31,19 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
         .catch(err => console.log("Error occurred: " + err))
 })
 
+//get out of events
+router.post('/events/:id/pull', isLoggedIn, (req, res, next) => {
+
+    const { id } = req.params
+    const { _id } = req.session.currentUser
+
+    Event
+        .findByIdAndUpdate(id, { $pull: { assistance: _id } })
+        .then(() => res.redirect(`/profile`))
+        .catch((err) => console.log(err)
+        )
+})
+
 
 
 // admin page (PROTECTED & ROLE BASED ACCESS -render-)

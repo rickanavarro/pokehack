@@ -55,13 +55,6 @@
                <li class="nav-item">
                   <a class="nav-link" href="/logout">Log out</a>
                </li>
-               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                     aria-expanded="false">Admin</a>
-                  <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
-                  </ul>
-               </li>
                {{else}}
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -73,6 +66,15 @@
                   </ul>
                </li>
 
+               {{/if}}
+               {{#if isAdmin}}
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                     aria-expanded="false">Admin</a>
+                  <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
+                  </ul>
+               </li>
                {{/if}}
             </ul>
          </div>

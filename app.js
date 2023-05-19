@@ -19,9 +19,11 @@ const projectName = "PokeHack";
 app.locals.appTitle = `${capitalize(projectName)}`;
 
 app.use((req, res, next) => {
-    app.locals.loggedUser = req.session.currentUser
+    app.locals.loggedUser = req.session.currentUser;
+    app.locals.isAdmin = req.session.currentUser?.role == "ADMIN"
     next()
 })
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
