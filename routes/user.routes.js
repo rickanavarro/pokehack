@@ -74,6 +74,15 @@ router.post("/admin/:id", (req, res, next) => {
         .catch(err => console.log(err))
 })
 
+router.post("/unfavorite/:name", (req, res, next) => {
+    const { name } = req.params
+    const id = req.session.currentUser;
+    User
+        .findByIdAndUpdate(id, { $pull: { "myFavorites": name } })
+        .then(res.redirect('/profile'))
+        .catch(err => console.log(err))
+})
+
 
 
 
