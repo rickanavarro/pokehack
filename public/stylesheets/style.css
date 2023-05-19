@@ -53,3 +53,58 @@ li {
 .card {
   background: linear-gradient(to bottom right, #e6f7ff, #99c2ff);
 }
+
+.pokemon {
+
+  margin-top: 100px;
+  border: 13px solid #e65805;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.intro {
+  margin-top: 150px;
+  border-radius: 10px;
+  background-color: #f2e8d5;
+}
+
+.logo {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+
+}
+
+
+.logo a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgba(242, 232, 213, 0.8);
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo a:hover {
+  background-color: rgba(255, 201, 71, 0.8);
+  color: #ffffff;
+}
+
+.footer {
+  background-color: blue;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.footer p {
+  margin: 0;
+}
